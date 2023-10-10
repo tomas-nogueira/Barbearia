@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\Aluno\Desktop\Barbearia\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\Aluno\Desktop\Barbearia\bin\Debug\net6.0\appsettings.json
 C:\Users\Aluno\Desktop\Barbearia\bin\Debug\net6.0\Barbearia.staticwebassets.runtime.json
@@ -85,3 +86,13 @@ C:\Users\Aluno\Desktop\Barbearia\obj\Debug\net6.0\refint\Barbearia.dll
 C:\Users\Aluno\Desktop\Barbearia\obj\Debug\net6.0\Barbearia.pdb
 C:\Users\Aluno\Desktop\Barbearia\obj\Debug\net6.0\Barbearia.genruntimeconfig.cache
 C:\Users\Aluno\Desktop\Barbearia\obj\Debug\net6.0\ref\Barbearia.dll
+=======
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.csproj.AssemblyReference.cache
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.AssemblyInfoInputs.cache
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.AssemblyInfo.cs
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.csproj.CoreCompileInputs.cache
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.RazorAssemblyInfo.cache
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.RazorAssemblyInfo.cs
+>>>>>>> master
