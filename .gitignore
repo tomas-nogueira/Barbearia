@@ -1,1 +1,6 @@
-﻿
+
+
+obj
+bin
+.vs
+Program.cs

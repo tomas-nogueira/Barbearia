@@ -1,0 +1,8 @@
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.csproj.AssemblyReference.cache
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.AssemblyInfoInputs.cache
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.AssemblyInfo.cs
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.csproj.CoreCompileInputs.cache
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.RazorAssemblyInfo.cache
+C:\Users\Aluno\Desktop\Sprint 3\Barbearia\obj\Debug\net6.0\Barbearia.RazorAssemblyInfo.cs

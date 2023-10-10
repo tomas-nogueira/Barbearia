@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Aluno\\Desktop\\Sprint 3\\Barbearia\\Barbearia.csproj": {}
+    "C:\\Users\\Aluno\\Desktop\\Barbearia\\Barbearia.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Aluno\\Desktop\\Sprint 3\\Barbearia\\Barbearia.csproj": {
+    "C:\\Users\\Aluno\\Desktop\\Barbearia\\Barbearia.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aluno\\Desktop\\Sprint 3\\Barbearia\\Barbearia.csproj",
+        "projectUniqueName": "C:\\Users\\Aluno\\Desktop\\Barbearia\\Barbearia.csproj",
         "projectName": "Barbearia",
-        "projectPath": "C:\\Users\\Aluno\\Desktop\\Sprint 3\\Barbearia\\Barbearia.csproj",
+        "projectPath": "C:\\Users\\Aluno\\Desktop\\Barbearia\\Barbearia.csproj",
         "packagesPath": "C:\\Users\\Aluno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aluno\\Desktop\\Sprint 3\\Barbearia\\obj\\",
+        "outputPath": "C:\\Users\\Aluno\\Desktop\\Barbearia\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,6 +43,22 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[7.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[7.0.12, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[7.0.12, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -62,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
