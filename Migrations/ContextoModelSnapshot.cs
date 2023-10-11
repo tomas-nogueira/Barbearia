@@ -77,20 +77,32 @@ namespace Barbearia.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("RuaSalao");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 944d1af4c2cbf5fc84c03b032d9a853b0e168d82
                     b.Property<int>("ServiceId")
                         .HasColumnType("int");
 
                     b.Property<int?>("TypeServiceId")
                         .HasColumnType("int");
+<<<<<<< HEAD
 
+=======
+>>>>>>> 944d1af4c2cbf5fc84c03b032d9a853b0e168d82
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+<<<<<<< HEAD
 
                     b.HasIndex("TypeServiceId");
 
+=======
+                    b.HasIndex("TypeServiceId");
+
+
+>>>>>>> 944d1af4c2cbf5fc84c03b032d9a853b0e168d82
                     b.HasIndex("UserId");
 
                     b.ToTable("Salao");
