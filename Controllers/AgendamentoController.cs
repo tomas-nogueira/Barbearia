@@ -47,7 +47,7 @@ namespace Barbearia.Controllers
         // GET: Agendamento/Create
         public IActionResult Create()
         {
-            ViewData["ServiceSalaoId"] = new SelectList(_context.Set<ServiceSalao>(), "ServiceSalaoId", "ServiceSalaoId");
+            ViewData["ServiceSalaoId"] = new SelectList(_context.ServiceSalao, "ServiceSalaoId", "ServiceSalaoId");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace Barbearia.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ServiceSalaoId"] = new SelectList(_context.Set<ServiceSalao>(), "ServiceSalaoId", "ServiceSalaoId", agendamento.ServiceSalaoId);
+            ViewData["ServiceSalaoId"] = new SelectList(_context.ServiceSalao, "ServiceSalaoId", "ServiceSalaoId", agendamento.ServiceSalaoId);
             return View(agendamento);
         }
 
@@ -81,7 +81,7 @@ namespace Barbearia.Controllers
             {
                 return NotFound();
             }
-            ViewData["ServiceSalaoId"] = new SelectList(_context.Set<ServiceSalao>(), "ServiceSalaoId", "ServiceSalaoId", agendamento.ServiceSalaoId);
+            ViewData["ServiceSalaoId"] = new SelectList(_context.ServiceSalao, "ServiceSalaoId", "ServiceSalaoId", agendamento.ServiceSalaoId);
             return View(agendamento);
         }
 
@@ -117,7 +117,7 @@ namespace Barbearia.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ServiceSalaoId"] = new SelectList(_context.Set<ServiceSalao>(), "ServiceSalaoId", "ServiceSalaoId", agendamento.ServiceSalaoId);
+            ViewData["ServiceSalaoId"] = new SelectList(_context.ServiceSalao, "ServiceSalaoId", "ServiceSalaoId", agendamento.ServiceSalaoId);
             return View(agendamento);
         }
 

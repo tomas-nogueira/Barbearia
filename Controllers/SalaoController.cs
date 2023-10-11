@@ -47,7 +47,7 @@ namespace Barbearia.Controllers
         // GET: Salao/Create
         public IActionResult Create()
         {
-            ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Id");
+            ViewData["UserId"] = new SelectList(_context.User, "Id", "Id");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace Barbearia.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Id", salao.UserId);
+            ViewData["UserId"] = new SelectList(_context.User, "Id", "Id", salao.UserId);
             return View(salao);
         }
 
@@ -81,7 +81,7 @@ namespace Barbearia.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Id", salao.UserId);
+            ViewData["UserId"] = new SelectList(_context.User, "Id", "Id", salao.UserId);
             return View(salao);
         }
 
@@ -117,7 +117,7 @@ namespace Barbearia.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.Set<User>(), "Id", "Id", salao.UserId);
+            ViewData["UserId"] = new SelectList(_context.User, "Id", "Id", salao.UserId);
             return View(salao);
         }
 
