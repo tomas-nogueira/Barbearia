@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Barbearia.Migrations
 {
     /// <inheritdoc />
-    public partial class Criacaocrudinicial : Migration
+    public partial class CriacaoInicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -74,18 +74,11 @@ namespace Barbearia.Migrations
                     RuaSalao = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BairroSalao = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CepSalao = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    ServiceId = table.Column<int>(type: "int", nullable: false),
-                    TypeServiceId = table.Column<int>(type: "int", nullable: true)
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Salao", x => x.SalaoId);
-                    table.ForeignKey(
-                        name: "FK_Salao_TypeService_TypeServiceId",
-                        column: x => x.TypeServiceId,
-                        principalTable: "TypeService",
-                        principalColumn: "ServiceId");
                     table.ForeignKey(
                         name: "FK_Salao_User_UserId",
                         column: x => x.UserId,
@@ -144,11 +137,6 @@ namespace Barbearia.Migrations
                 name: "IX_Agendamento_ServiceSalaoId",
                 table: "Agendamento",
                 column: "ServiceSalaoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Salao_TypeServiceId",
-                table: "Salao",
-                column: "TypeServiceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Salao_UserId",

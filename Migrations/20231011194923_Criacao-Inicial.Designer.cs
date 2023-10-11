@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Barbearia.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20231011120145_Criacao-crudinicial")]
-    partial class Criacaocrudinicial
+    [Migration("20231011194923_Criacao-Inicial")]
+    partial class CriacaoInicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -81,18 +81,10 @@ namespace Barbearia.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("RuaSalao");
 
-                    b.Property<int>("ServiceId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TypeServiceId")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("TypeServiceId");
 
                     b.HasIndex("UserId");
 
@@ -101,12 +93,12 @@ namespace Barbearia.Migrations
 
             modelBuilder.Entity("Barbearia.Models.ServiceSalao", b =>
                 {
-                    b.Property<int>("ServiceSalaoId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasColumnName("ServiceSalaoId");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ServiceSalaoId"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("SalaoId")
                         .HasColumnType("int");
@@ -117,7 +109,7 @@ namespace Barbearia.Migrations
                     b.Property<int?>("TypeServiceId")
                         .HasColumnType("int");
 
-                    b.HasKey("ServiceSalaoId");
+                    b.HasKey("Id");
 
                     b.HasIndex("SalaoId");
 
@@ -230,17 +222,11 @@ namespace Barbearia.Migrations
 
             modelBuilder.Entity("Barbearia.Models.Salao", b =>
                 {
-                    b.HasOne("Barbearia.Models.TypeService", "TypeService")
-                        .WithMany()
-                        .HasForeignKey("TypeServiceId");
-
                     b.HasOne("Barbearia.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("TypeService");
 
                     b.Navigation("User");
                 });

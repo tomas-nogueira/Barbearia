@@ -8,7 +8,7 @@ namespace Barbearia.Models
     {
         [Column("ServiceSalaoId")]
         [Display(Name = "Código do serviço")]
-        public int ServiceSalaoId { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey("SalaoId")]
         public int SalaoId { get; set; }
