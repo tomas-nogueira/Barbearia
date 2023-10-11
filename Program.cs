@@ -1,3 +1,4 @@
+using Barbearia.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<Contexto>
-    (options => options.UseSqlServer("Data Source=SP-1491010\\SQLSENAI;Initial Catalog = Barbearia;Integrated Security = True;TrustServerCertificate = True"));
+    (options => options.UseSqlServer("Data Source=SP-1491011\\SQLSENAI;Initial Catalog = Barbearia;Integrated Security = True;TrustServerCertificate = True"));
 
 
 var app = builder.Build();
