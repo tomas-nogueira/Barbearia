@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Barbearia.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20231011121631_Criacao-crudinicialvalmir")]
-    partial class Criacaocrudinicialvalmir
+    [Migration("20231011120145_Criacao-crudinicial")]
+    partial class Criacaocrudinicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
