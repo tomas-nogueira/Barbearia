@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Barbearia.Migrations
 {
     /// <inheritdoc />
-    public partial class Criacaocrudinicialvalmir : Migration
+    public partial class Criacaocrudinicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
