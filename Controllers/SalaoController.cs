@@ -90,7 +90,7 @@ namespace Barbearia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NameSalao,CidadeSalao,RuaSalao,BairroSalao,CepSalao,UserId,ServiceId")] Salao salao)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameSalao,CidadeSalao,RuaSalao,BairroSalao,CepSalao,UserId")] Salao salao)
         {
             if (id != salao.Id)
             {
