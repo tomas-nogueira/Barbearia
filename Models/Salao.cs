@@ -12,7 +12,7 @@ namespace Barbearia.Models
 
         [Column("NameSalao")]
         [Display(Name = "Nome do salão")]
-        public int NameSalao { get; set; }
+        public string NameSalao { get; set; } = string.Empty;
 
         [Column("CidadeSalao")]
         [Display(Name = "Cidade do salão")]
