@@ -56,7 +56,7 @@ namespace Barbearia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NameSalao,CidadeSalao,RuaSalao,BairroSalao,CepSalao,UserId")] Salao salao)
+        public async Task<IActionResult> Create([Bind("Id,NameSalao,CidadeSalao,RuaSalao,BairroSalao,CepSalao,NumeroSalao,UserId")] Salao salao)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace Barbearia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NameSalao,CidadeSalao,RuaSalao,BairroSalao,CepSalao,UserId")] Salao salao)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameSalao,CidadeSalao,RuaSalao,BairroSalao,CepSalao,NumeroSalao,UserId")] Salao salao)
         {
             if (id != salao.Id)
             {

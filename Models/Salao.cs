@@ -30,6 +30,10 @@ namespace Barbearia.Models
         [Display(Name = "CEP do salão")]
         public string CepSalao { get; set; } = string.Empty;
 
+        [Column("NumeroSalao")]
+        [Display(Name = "Número do salão")]
+        public int NumeroSalao { get; set; }
+
         [ForeignKey("UserId")]
         public int UserId { get; set; }
         public User? User { get; set; }
