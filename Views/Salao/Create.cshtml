@@ -1,7 +1,7 @@
 ﻿@model Barbearia.Models.Salao
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Cadastrar Salão";
 }
 
 <h1>Cadastrar salão</h1>
@@ -32,9 +32,10 @@
                 <input asp-for="BairroSalao" class="form-control" />
                 <span asp-validation-for="BairroSalao" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CepSalao" class="control-label"></label>
-                <input asp-for="CepSalao" class="form-control" id="CEP" />
+            <div class="input-group mb-3 mt-3">
+                <label asp-for="CepSalao" class="control-label m-3"></label>
+                <input asp-for="CepSalao" class="form-control" id="CEP" placeholder="CEP do salão" aria-label="CEP do salão" aria-describedby="button-addon2" />
+                <button class="btn btn-outline-success" type="button" id="button-addon2">Verificar</button>
                 <span asp-validation-for="CepSalao" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -42,14 +43,14 @@
                 <select asp-for="UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
             </div>
             <div class="form-group mt-4">
-                <input type="submit" value="Create" class="btn btn-primary btn-outline-success" />
+                <button type="submit" class="btn btn-outline-success" >Cadastrar</button>
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Voltar</a>
 </div>
 
 @section Scripts {
