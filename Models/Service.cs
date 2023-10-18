@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Barbearia.Models
 {
-    [Table("TypeService")]
-    public class TypeService
+    [Table("Service")]
+    public class Service
     {
         [Column("ServiceId")]
         [Display(Name = "Número do serviço")]

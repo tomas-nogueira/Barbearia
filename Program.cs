@@ -10,6 +10,7 @@ builder.Services.AddDbContext<Contexto>
     (options => options.UseSqlServer("Data Source=SP-1491010\\SQLSENAI; Initial Catalog = Barbearia; Integrated Security = True; TrustServerCertificate = True;"));
 
 
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

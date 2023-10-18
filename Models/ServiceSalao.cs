@@ -16,6 +16,6 @@ namespace Barbearia.Models
 
         [ForeignKey("ServiceId")]
         public int ServiceId { get; set; }
-        public TypeService? TypeService { get; set; }
+        public Service? Service { get; set; }
     }
 }

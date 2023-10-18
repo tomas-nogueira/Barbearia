@@ -14,7 +14,7 @@ namespace Barbearia.Models
         public DbSet<Agendamento> Agendamento { get; set; }
         public DbSet<Salao> Salao { get; set; }
         public DbSet<ServiceSalao> ServiceSalao { get; set; }
-        public DbSet<TypeService> TypeService { get; set; }
+        public DbSet<Service> Service { get; set; }
         public DbSet<TypeUser> TypeUser { get; set; }
         public DbSet<User> User { get; set; }
         
