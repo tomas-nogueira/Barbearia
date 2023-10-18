@@ -81,7 +81,7 @@ namespace Barbearia.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.User, "Id", "NameUser", salao.UserId);
+            ViewData["UserId"] = new SelectList(_context.User.Where(x => x.TypeUser.Id == 1), "Id", "NameUser", salao.UserId);
             return View(salao);
         }
 
@@ -117,7 +117,7 @@ namespace Barbearia.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.User, "Id", "NameUser", salao.UserId);
+            ViewData["UserId"] = new SelectList(_context.User.Where(x => x.TypeUser.Id == 1), "Id", "NameUser", salao.UserId);
             return View(salao);
         }
 

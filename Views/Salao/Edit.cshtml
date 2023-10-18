@@ -7,8 +7,13 @@
 <h1>Editar</h1>
 
 <hr />
-<div class="row">
-    <div class="col-md-6">
+
+<div>
+    <a asp-action="Index" class="text-black">Voltar</a>
+</div>
+
+<div class="Geral">
+    <div class="col-md-6 containerForm">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -21,7 +26,7 @@
                     <span asp-validation-for="CepSalao" class="text-danger"></span>
                     <label asp-for="CepSalao" class="control-label m-3">CEP</label>
                     <input asp-for="CepSalao" class="form-control" id="CEP" placeholder="CEP do salão" aria-label="CEP do salão" aria-describedby="button-addon2" size="10" maxlength="9" />
-                    <button class="btn btn-outline-success" type="button" onclick="VerificarCep()" id="button-addon2">Verificar</button>
+                    <button class="btn btn-outline-warning" type="button" onclick="VerificarCep()" id="button-addon2">Verificar</button>
                 </div>
             </div>
             <div class="form-group">
@@ -53,10 +58,6 @@
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Voltar</a>
 </div>
 
 @section Scripts {
