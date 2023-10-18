@@ -22,3 +22,18 @@ body {
     font-size: 6em;
     border-bottom: 2px solid #927f7f;
 }
+.img {
+    width: 18rem;
+    height: 18rem;
+}
+footer div{
+    color: white;
+}
+footer div a{
+    color: white;
+    text-decoration: none;
+}
+.imgheader{
+    width: 4rem;
+    height: 4rem;
+}
