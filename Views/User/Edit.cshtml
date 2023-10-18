@@ -1,18 +1,21 @@
 ﻿@model Barbearia.Models.User
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editando...";
 }
 
-<h1>Edit</h1>
+<h1>Editando um usuário</h1>
 
-<h4>User</h4>
+
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+<div>
+    <a asp-action="Index" class="text-black-50">Voltar</a>
+</div>
+
+<div class="Geral">
+    <div class="col-md-4 containerForm">
+        <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Id" />
             <div class="form-group">
                 <label asp-for="NameUser" class="control-label"></label>
                 <input asp-for="NameUser" class="form-control" />
@@ -36,12 +39,10 @@
             <div class="form-group">
                 <label asp-for="TipoDocumentoId" class="control-label"></label>
                 <select asp-for="TipoDocumentoId" class="form-control" asp-items="ViewBag.TipoDocumentoId"></select>
-                <span asp-validation-for="TipoDocumentoId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TypeUserId" class="control-label"></label>
                 <select asp-for="TypeUserId" class="form-control" asp-items="ViewBag.TypeUserId"></select>
-                <span asp-validation-for="TypeUserId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SenhaUser" class="control-label"></label>
@@ -49,14 +50,10 @@
                 <span asp-validation-for="SenhaUser" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-success" />
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
