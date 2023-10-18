@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Barbearia.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20231018115404_Teste-Supremo")]
-    partial class TesteSupremo
+    [Migration("20231018142631_Criacao-Certa")]
+    partial class CriacaoCerta
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -143,6 +143,25 @@ namespace Barbearia.Migrations
                     b.ToTable("ServiceSalao");
                 });
 
+            modelBuilder.Entity("Barbearia.Models.TipoDocumento", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("TipoDocumentoId");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("TipodeDocumento")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("TipodeDocumento");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TipoDocumento");
+                });
+
             modelBuilder.Entity("Barbearia.Models.TypeUser", b =>
                 {
                     b.Property<int>("Id")
@@ -171,15 +190,10 @@ namespace Barbearia.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("CnpjUser")
+                    b.Property<string>("DocumentoUser")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("CnpjUser");
-
-                    b.Property<string>("CpfUser")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("CpfUser");
+                        .HasColumnName("DocumentoUser");
 
                     b.Property<string>("EmailUser")
                         .IsRequired()
@@ -201,10 +215,15 @@ namespace Barbearia.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("TelUser");
 
+                    b.Property<int>("TipoDocumentoId")
+                        .HasColumnType("int");
+
                     b.Property<int>("TypeUserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TipoDocumentoId");
 
                     b.HasIndex("TypeUserId");
 
@@ -254,11 +273,19 @@ namespace Barbearia.Migrations
 
             modelBuilder.Entity("Barbearia.Models.User", b =>
                 {
+                    b.HasOne("Barbearia.Models.TipoDocumento", "TipoDocumento")
+                        .WithMany()
+                        .HasForeignKey("TipoDocumentoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Barbearia.Models.TypeUser", "TypeUser")
                         .WithMany()
                         .HasForeignKey("TypeUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("TipoDocumento");
 
                     b.Navigation("TypeUser");
                 });

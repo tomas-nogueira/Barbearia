@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Barbearia.Migrations
 {
     /// <inheritdoc />
-    public partial class CriacaoInicial : Migration
+    public partial class CriacaoCerta : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "TypeService",
+                name: "Service",
                 columns: table => new
                 {
                     ServiceId = table.Column<int>(type: "int", nullable: false)
@@ -22,7 +22,20 @@ namespace Barbearia.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TypeService", x => x.ServiceId);
+                    table.PrimaryKey("PK_Service", x => x.ServiceId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TipoDocumento",
+                columns: table => new
+                {
+                    TipoDocumentoId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    TipodeDocumento = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TipoDocumento", x => x.TipoDocumentoId);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,14 +60,20 @@ namespace Barbearia.Migrations
                     NameUser = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TelUser = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     EmailUser = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CpfUser = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CnpjUser = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DocumentoUser = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    TipoDocumentoId = table.Column<int>(type: "int", nullable: false),
                     TypeUserId = table.Column<int>(type: "int", nullable: false),
                     SenhaUser = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_User", x => x.UserId);
+                    table.ForeignKey(
+                        name: "FK_User_TipoDocumento_TipoDocumentoId",
+                        column: x => x.TipoDocumentoId,
+                        principalTable: "TipoDocumento",
+                        principalColumn: "TipoDocumentoId",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_User_TypeUser_TypeUserId",
                         column: x => x.TypeUserId,
@@ -69,11 +88,12 @@ namespace Barbearia.Migrations
                 {
                     SalaoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NameSalao = table.Column<int>(type: "int", nullable: false),
+                    NameSalao = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CidadeSalao = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RuaSalao = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BairroSalao = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CepSalao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NumeroSalao = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -94,8 +114,7 @@ namespace Barbearia.Migrations
                     ServiceSalaoId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     SalaoId = table.Column<int>(type: "int", nullable: false),
-                    ServiceId = table.Column<int>(type: "int", nullable: false),
-                    TypeServiceId = table.Column<int>(type: "int", nullable: true)
+                    ServiceId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -107,10 +126,11 @@ namespace Barbearia.Migrations
                         principalColumn: "SalaoId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ServiceSalao_TypeService_TypeServiceId",
-                        column: x => x.TypeServiceId,
-                        principalTable: "TypeService",
-                        principalColumn: "ServiceId");
+                        name: "FK_ServiceSalao_Service_ServiceId",
+                        column: x => x.ServiceId,
+                        principalTable: "Service",
+                        principalColumn: "ServiceId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -149,9 +169,14 @@ namespace Barbearia.Migrations
                 column: "SalaoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ServiceSalao_TypeServiceId",
+                name: "IX_ServiceSalao_ServiceId",
                 table: "ServiceSalao",
-                column: "TypeServiceId");
+                column: "ServiceId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_TipoDocumentoId",
+                table: "User",
+                column: "TipoDocumentoId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_User_TypeUserId",
@@ -172,10 +197,13 @@ namespace Barbearia.Migrations
                 name: "Salao");
 
             migrationBuilder.DropTable(
-                name: "TypeService");
+                name: "Service");
 
             migrationBuilder.DropTable(
                 name: "User");
+
+            migrationBuilder.DropTable(
+                name: "TipoDocumento");
 
             migrationBuilder.DropTable(
                 name: "TypeUser");
