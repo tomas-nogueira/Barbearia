@@ -1,21 +1,35 @@
 ﻿using Barbearia.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System.Diagnostics;
 
 namespace Barbearia.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly Contexto _context;
+              
+        public HomeController(Contexto context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index(string pesquisa)
         {
-            return View();
+            if(string.IsNullOrWhiteSpace(pesquisa))
+            {
+                var contexto = _context.Salao.Include(s => s.User);
+                return View(await contexto.ToListAsync());
+            }
+            else
+            {
+                var salao =
+                _context.Salao 
+                .Where(x => x.NameSalao.Contains(pesquisa)) 
+                .OrderBy(x => x.NameSalao); 
+                return View(salao);
+            }           
         }
 
         public IActionResult Privacy()

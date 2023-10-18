@@ -1,4 +1,6 @@
-﻿﻿@{
+﻿@model IEnumerable<Barbearia.Models.Salao>
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -6,4 +8,39 @@
     <h1 class="textoh1">Barbearia</h1>
     <a href="/"><img src="img/204-removebg-preview.png" img class="img" /></a>
     <p>Desenvolvido por Tomás, Rodrigo, Valmir e Lucas.</p>
+    <h2>Pesquisar salões cadastrados:</h2>
+    <div>
+        <!--Cria um form que sera chamado no metodo index, controler de pessoa atraves do metodo Get, essse (arrob<a href="c:\users\aluno\desktop\sprint 3\aula 01 c sharp\controllers\pessoacontroller.cs">c:\users\aluno\desktop\sprint 3\aula 01 c sharp\controllers\pessoacontroller.cs</a>a) é como se fosse um pedaço de C# dentro da´pesquisa-->
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+        {
+            <p>
+                Digite aqui sua pesquisa: @Html.TextBox("pesquisa") 
+                <input type="submit" value="Pesquisar" />
+            </p>
+        }
+    </div>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>
+                    @Html.DisplayNameFor(model => model.NameSalao)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                        @Html.DisplayFor(modelItem => item.NameSalao)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary text-decoration-none btn-sm">Editar</a> |
+                    <a href="/Salao/Details/@item.Id" class="btn btn-outline-warning text-decoration-none btn-sm">Detalhes</a> |
+                </td>
+            </tr>
+            }
+    </tbody>
+</table>
+
 </div>
