@@ -21,7 +21,7 @@ namespace Barbearia.Controllers
         // GET: User
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.User.Include(u => u.TypeUser);
+            var contexto = _context.User.Include(u => u.TipoDocumento).Include(u => u.TypeUser);
             return View(await contexto.ToListAsync());
         }
 
@@ -34,6 +34,7 @@ namespace Barbearia.Controllers
             }
 
             var user = await _context.User
+                .Include(u => u.TipoDocumento)
                 .Include(u => u.TypeUser)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)
@@ -47,6 +48,7 @@ namespace Barbearia.Controllers
         // GET: User/Create
         public IActionResult Create()
         {
+            ViewData["TipoDocumentoId"] = new SelectList(_context.TipoDocumento, "Id", "TipodeDocumento");
             ViewData["TypeUserId"] = new SelectList(_context.TypeUser, "Id", "TypeNameUser");
             return View();
         }
@@ -56,7 +58,7 @@ namespace Barbearia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NameUser,TelUser,EmailUser,CpfUser,CnpjUser,TypeUserId,SenhaUser")] User user)
+        public async Task<IActionResult> Create([Bind("Id,NameUser,TelUser,EmailUser,DocumentoUser,TipoDocumentoId,TypeUserId,SenhaUser")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -64,6 +66,7 @@ namespace Barbearia.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TipoDocumentoId"] = new SelectList(_context.TipoDocumento, "Id", "TipodeDocumento", user.TipoDocumentoId);
             ViewData["TypeUserId"] = new SelectList(_context.TypeUser, "Id", "TypeNameUser", user.TypeUserId);
             return View(user);
         }
@@ -81,6 +84,7 @@ namespace Barbearia.Controllers
             {
                 return NotFound();
             }
+            ViewData["TipoDocumentoId"] = new SelectList(_context.TipoDocumento, "Id", "TipodeDocumento", user.TipoDocumentoId);
             ViewData["TypeUserId"] = new SelectList(_context.TypeUser, "Id", "TypeNameUser", user.TypeUserId);
             return View(user);
         }
@@ -90,7 +94,7 @@ namespace Barbearia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NameUser,TelUser,EmailUser,CpfUser,CnpjUser,TypeUserId,SenhaUser")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameUser,TelUser,EmailUser,DocumentoUser,TipoDocumentoId,TypeUserId,SenhaUser")] User user)
         {
             if (id != user.Id)
             {
@@ -117,6 +121,7 @@ namespace Barbearia.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["TipoDocumentoId"] = new SelectList(_context.TipoDocumento, "Id", "TipodeDocumento", user.TipoDocumentoId);
             ViewData["TypeUserId"] = new SelectList(_context.TypeUser, "Id", "TypeNameUser", user.TypeUserId);
             return View(user);
         }
@@ -130,6 +135,7 @@ namespace Barbearia.Controllers
             }
 
             var user = await _context.User
+                .Include(u => u.TipoDocumento)
                 .Include(u => u.TypeUser)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (user == null)

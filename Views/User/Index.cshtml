@@ -22,10 +22,10 @@
                 @Html.DisplayNameFor(model => model.EmailUser)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CpfUser)
+                @Html.DisplayNameFor(model => model.DocumentoUser)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CnpjUser)
+                @Html.DisplayNameFor(model => model.TipoDocumento)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TypeUser)
@@ -49,13 +49,13 @@
                 @Html.DisplayFor(modelItem => item.EmailUser)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CpfUser)
+                @Html.DisplayFor(modelItem => item.DocumentoUser)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CnpjUser)
+                    @Html.DisplayFor(modelItem => item.TipoDocumento.TipodeDocumento)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TypeUser.Id)
+                    @Html.DisplayFor(modelItem => item.TypeUser.TypeNameUser)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SenhaUser)
