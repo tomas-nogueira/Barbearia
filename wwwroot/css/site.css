@@ -15,4 +15,10 @@ html {
 
 body {
   margin-bottom: 60px;
+  background-color: slategrey;
+  color: white;
+}
+.textoh1 {
+    font-size: 6em;
+    border-bottom: 2px solid #927f7f;
 }
