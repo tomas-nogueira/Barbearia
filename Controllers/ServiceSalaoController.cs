@@ -21,7 +21,7 @@ namespace Barbearia.Controllers
         // GET: ServiceSalao
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.ServiceSalao.Include(s => s.Salao);
+            var contexto = _context.ServiceSalao.Include(s => s.Salao).Include(s => s.Service);
             return View(await contexto.ToListAsync());
         }
 
@@ -35,6 +35,7 @@ namespace Barbearia.Controllers
 
             var serviceSalao = await _context.ServiceSalao
                 .Include(s => s.Salao)
+                .Include(s => s.Service)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (serviceSalao == null)
             {
@@ -48,6 +49,7 @@ namespace Barbearia.Controllers
         public IActionResult Create()
         {
             ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao");
+            ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "NameService");
             return View();
         }
 
@@ -65,6 +67,7 @@ namespace Barbearia.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao", serviceSalao.SalaoId);
+            ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "NameService", serviceSalao.ServiceId);
             return View(serviceSalao);
         }
 
@@ -82,6 +85,7 @@ namespace Barbearia.Controllers
                 return NotFound();
             }
             ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao", serviceSalao.SalaoId);
+            ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "NameService", serviceSalao.ServiceId);
             return View(serviceSalao);
         }
 
@@ -118,6 +122,7 @@ namespace Barbearia.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao", serviceSalao.SalaoId);
+            ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "NameService", serviceSalao.ServiceId);
             return View(serviceSalao);
         }
 
@@ -131,6 +136,7 @@ namespace Barbearia.Controllers
 
             var serviceSalao = await _context.ServiceSalao
                 .Include(s => s.Salao)
+                .Include(s => s.Service)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (serviceSalao == null)
             {

@@ -9,87 +9,87 @@ using Barbearia.Models;
 
 namespace Barbearia.Controllers
 {
-    public class TypeServiceController : Controller
+    public class ServiceController : Controller
     {
         private readonly Contexto _context;
 
-        public TypeServiceController(Contexto context)
+        public ServiceController(Contexto context)
         {
             _context = context;
         }
 
-        // GET: TypeService
+        // GET: Service
         public async Task<IActionResult> Index()
         {
-              return _context.TypeService != null ? 
-                          View(await _context.TypeService.ToListAsync()) :
-                          Problem("Entity set 'Contexto.TypeService'  is null.");
+              return _context.Service != null ? 
+                          View(await _context.Service.ToListAsync()) :
+                          Problem("Entity set 'Contexto.Service'  is null.");
         }
 
-        // GET: TypeService/Details/5
+        // GET: Service/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.TypeService == null)
+            if (id == null || _context.Service == null)
             {
                 return NotFound();
             }
 
-            var typeService = await _context.TypeService
+            var service = await _context.Service
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (typeService == null)
+            if (service == null)
             {
                 return NotFound();
             }
 
-            return View(typeService);
+            return View(service);
         }
 
-        // GET: TypeService/Create
+        // GET: Service/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: TypeService/Create
+        // POST: Service/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NameService,TimeService")] TypeService typeService)
+        public async Task<IActionResult> Create([Bind("Id,NameService,TimeService")] Service service)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(typeService);
+                _context.Add(service);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(typeService);
+            return View(service);
         }
 
-        // GET: TypeService/Edit/5
+        // GET: Service/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.TypeService == null)
+            if (id == null || _context.Service == null)
             {
                 return NotFound();
             }
 
-            var typeService = await _context.TypeService.FindAsync(id);
-            if (typeService == null)
+            var service = await _context.Service.FindAsync(id);
+            if (service == null)
             {
                 return NotFound();
             }
-            return View(typeService);
+            return View(service);
         }
 
-        // POST: TypeService/Edit/5
+        // POST: Service/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NameService,TimeService")] TypeService typeService)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,NameService,TimeService")] Service service)
         {
-            if (id != typeService.Id)
+            if (id != service.Id)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace Barbearia.Controllers
             {
                 try
                 {
-                    _context.Update(typeService);
+                    _context.Update(service);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TypeServiceExists(typeService.Id))
+                    if (!ServiceExists(service.Id))
                     {
                         return NotFound();
                     }
@@ -114,49 +114,49 @@ namespace Barbearia.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(typeService);
+            return View(service);
         }
 
-        // GET: TypeService/Delete/5
+        // GET: Service/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.TypeService == null)
+            if (id == null || _context.Service == null)
             {
                 return NotFound();
             }
 
-            var typeService = await _context.TypeService
+            var service = await _context.Service
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (typeService == null)
+            if (service == null)
             {
                 return NotFound();
             }
 
-            return View(typeService);
+            return View(service);
         }
 
-        // POST: TypeService/Delete/5
+        // POST: Service/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.TypeService == null)
+            if (_context.Service == null)
             {
-                return Problem("Entity set 'Contexto.TypeService'  is null.");
+                return Problem("Entity set 'Contexto.Service'  is null.");
             }
-            var typeService = await _context.TypeService.FindAsync(id);
-            if (typeService != null)
+            var service = await _context.Service.FindAsync(id);
+            if (service != null)
             {
-                _context.TypeService.Remove(typeService);
+                _context.Service.Remove(service);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TypeServiceExists(int id)
+        private bool ServiceExists(int id)
         {
-          return (_context.TypeService?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Service?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }
