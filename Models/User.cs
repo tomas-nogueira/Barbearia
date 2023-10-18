@@ -23,14 +23,16 @@ namespace Barbearia.Models
         [Display(Name = "Digite o email do usuário")]
         public string EmailUser { get; set; } = string.Empty;
 
-        [Column("CpfUser")]
-        [Display(Name = "Digite o CPF do usuário")]
-        public string CpfUser { get; set; } = string.Empty;
+        [Column("DocumentoUser")]
+        [Display(Name = "Documento do usuário")]
 
+        public string DocumentoUser { get; set; } = string.Empty;
 
-        [Column("CnpjUser")]
-        [Display(Name = "Digite o CNPJ do usuário")]
-        public string CnpjUser { get; set; } = string.Empty;
+        [ForeignKey("TipoDocumentoId")]
+
+        public int TipoDocumentoId { get; set; }
+
+        public TipoDocumento? TipoDocumento { get; set; }
 
         [ForeignKey("TypeUserId")] 
         public int TypeUserId { get; set; }

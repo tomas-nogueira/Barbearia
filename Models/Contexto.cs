@@ -17,6 +17,7 @@ namespace Barbearia.Models
         public DbSet<Service> Service { get; set; }
         public DbSet<TypeUser> TypeUser { get; set; }
         public DbSet<User> User { get; set; }
+        public DbSet<TipoDocumento> TipoDocumento { get; set;}
         
     }
 }
