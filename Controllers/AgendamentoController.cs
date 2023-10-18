@@ -21,7 +21,7 @@ namespace Barbearia.Controllers
         // GET: Agendamento
         public async Task<IActionResult> Index()
         {
-            var contexto = _context.Agendamento.Include(a => a.ServiceSalao);
+            var contexto = _context.Agendamento.Include(a => a.Salao).Include(a => a.Service);
             return View(await contexto.ToListAsync());
         }
 
@@ -34,7 +34,8 @@ namespace Barbearia.Controllers
             }
 
             var agendamento = await _context.Agendamento
-                .Include(a => a.ServiceSalao)
+                .Include(a => a.Salao)
+                .Include(a => a.Service)
                 .FirstOrDefaultAsync(m => m.AgendamentoId == id);
             if (agendamento == null)
             {
@@ -47,7 +48,8 @@ namespace Barbearia.Controllers
         // GET: Agendamento/Create
         public IActionResult Create()
         {
-            ViewData["ServiceSalaoId"] = new SelectList(_context.ServiceSalao, "Id", "Id");
+            ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao");
+            ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "NameService");
             return View();
         }
 
@@ -56,7 +58,7 @@ namespace Barbearia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("AgendamentoId,HorarioAgendamento,ServiceSalaoId")] Agendamento agendamento)
+        public async Task<IActionResult> Create([Bind("AgendamentoId,HorarioAgendamento,ServiceId,SalaoId")] Agendamento agendamento)
         {
             if (ModelState.IsValid)
             {
@@ -64,7 +66,8 @@ namespace Barbearia.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ServiceSalaoId"] = new SelectList(_context.ServiceSalao, "Id", "Id", agendamento.ServiceSalaoId);
+            ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao", agendamento.SalaoId);
+            ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "NameService", agendamento.ServiceId);
             return View(agendamento);
         }
 
@@ -81,7 +84,8 @@ namespace Barbearia.Controllers
             {
                 return NotFound();
             }
-            ViewData["ServiceSalaoId"] = new SelectList(_context.ServiceSalao, "Id", "Id", agendamento.ServiceSalaoId);
+            ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao", agendamento.SalaoId);
+            ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "NameService", agendamento.ServiceId);
             return View(agendamento);
         }
 
@@ -90,7 +94,7 @@ namespace Barbearia.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("AgendamentoId,HorarioAgendamento,ServiceSalaoId")] Agendamento agendamento)
+        public async Task<IActionResult> Edit(int id, [Bind("AgendamentoId,HorarioAgendamento,ServiceId,SalaoId")] Agendamento agendamento)
         {
             if (id != agendamento.AgendamentoId)
             {
@@ -117,7 +121,8 @@ namespace Barbearia.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ServiceSalaoId"] = new SelectList(_context.ServiceSalao, "Id", "Id", agendamento.ServiceSalaoId);
+            ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao", agendamento.SalaoId);
+            ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "NameService", agendamento.ServiceId);
             return View(agendamento);
         }
 
@@ -130,7 +135,8 @@ namespace Barbearia.Controllers
             }
 
             var agendamento = await _context.Agendamento
-                .Include(a => a.ServiceSalao)
+                .Include(a => a.Salao)
+                .Include(a => a.Service)
                 .FirstOrDefaultAsync(m => m.AgendamentoId == id);
             if (agendamento == null)
             {

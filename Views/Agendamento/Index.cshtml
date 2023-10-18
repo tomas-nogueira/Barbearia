@@ -16,7 +16,10 @@
                 @Html.DisplayNameFor(model => model.HorarioAgendamento)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ServiceSalao)
+                @Html.DisplayNameFor(model => model.Service)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Salao)
             </th>
             <th></th>
         </tr>
@@ -28,7 +31,10 @@
                 @Html.DisplayFor(modelItem => item.HorarioAgendamento)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ServiceSalao.Id)
+                @Html.DisplayFor(modelItem => item.Service.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Salao.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.AgendamentoId">Edit</a> |

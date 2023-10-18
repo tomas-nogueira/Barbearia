@@ -14,9 +14,14 @@ namespace Barbearia.Models
         [Display(Name = "Digite o horário do agendamento")]
         public DateTime HorarioAgendamento { get; set; }
 
-        [ForeignKey("ServiceSalaoId")]
-        public int ServiceSalaoId { get; set; }
+        [ForeignKey("ServiceId")]
+        public int ServiceId { get; set; }
 
-        public ServiceSalao? ServiceSalao { get; set; }
+        public Service? Service { get; set; }
+
+        [ForeignKey("SalaoId")]
+        public int SalaoId { get; set; }
+
+        public Salao? Salao { get; set; }
     }
 }
