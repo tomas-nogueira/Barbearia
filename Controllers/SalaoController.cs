@@ -47,7 +47,7 @@ namespace Barbearia.Controllers
         // GET: Salao/Create
         public IActionResult Create()
         {
-            ViewData["UserId"] = new SelectList(_context.User.Where(x => x.TypeUser.Id == 3), "Id", "NameUser");
+            ViewData["UserId"] = new SelectList(_context.User.Where(x => x.TypeUser.Id == 1), "Id", "NameUser");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace Barbearia.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.User.Where(x=> x.TypeUser.Id == 3), "Id", "NameUser", salao.UserId);
+            ViewData["UserId"] = new SelectList(_context.User.Where(x=> x.TypeUser.Id == 1), "Id", "NameUser", salao.UserId);
             return View(salao);
         }
 
@@ -81,7 +81,7 @@ namespace Barbearia.Controllers
             {
                 return NotFound();
             }
-            ViewData["UserId"] = new SelectList(_context.User.Where(x => x.TypeUser.Id == 3), "Id", "NameUser", salao.UserId);
+            ViewData["UserId"] = new SelectList(_context.User.Where(x => x.TypeUser.Id == 1), "Id", "NameUser", salao.UserId);
             return View(salao);
         }
 
@@ -117,7 +117,7 @@ namespace Barbearia.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["UserId"] = new SelectList(_context.User.Where(x => x.TypeUser.Id == 3), "Id", "NameUser", salao.UserId);
+            ViewData["UserId"] = new SelectList(_context.User.Where(x => x.TypeUser.Id == 1), "Id", "NameUser", salao.UserId);
             return View(salao);
         }
 
