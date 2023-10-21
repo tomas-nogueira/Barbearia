@@ -40,16 +40,7 @@ footer div a{
     cursor: pointer;
 }
 
-/*Style page de cadastra salao*/
 
-.containerForm {
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
-    background-color: gray;
-    border-radius: .4rem;
-
-}
 
 /*Style btns tabela*/
 
@@ -117,7 +108,7 @@ footer div a{
     transition-duration: .3s;
 }
 
-/*TESTE*/
+/*Botao da pagina de excluir*/
 button {
     width: 150px;
     height: 50px;
@@ -178,3 +169,15 @@ button {
         button:active .icon svg {
             transform: scale(0.8);
         }
+
+/*Forms de user*/
+
+
+.containerForm {
+    padding: 30px;
+    text-align:center;
+    margin: 0 auto;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
+}
