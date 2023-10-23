@@ -17,22 +17,22 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="NameUser" class="control-label"></label>
-                <input asp-for="NameUser" class="form-control" />
+                <input asp-for="NameUser" class="form-control" id="nameUser"/>
                 <span asp-validation-for="NameUser" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TelUser" class="control-label"></label>
-                <input asp-for="TelUser" class="form-control" />
+                <input asp-for="TelUser" class="form-control" id="telUser" />
                 <span asp-validation-for="TelUser" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="EmailUser" class="control-label"></label>
-                <input asp-for="EmailUser" class="form-control" />
+                <input asp-for="EmailUser" class="form-control" id="emailUser" />
                 <span asp-validation-for="EmailUser" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DocumentoUser" class="control-label"></label>
-                <input asp-for="DocumentoUser" class="form-control" />
+                <input asp-for="DocumentoUser" class="form-control" id="documentoUser" maxlength="14" />
                 <span asp-validation-for="DocumentoUser" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -45,11 +45,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="SenhaUser" class="control-label"></label>
-                <input asp-for="SenhaUser" class="form-control" type="password" />
+                <input asp-for="SenhaUser" class="form-control" type="password" id="senhaUser" />
                 <span asp-validation-for="SenhaUser" class="text-danger"></span>
             </div>
             <div class="form-group mt-2">
-                <input type="submit" value="Create" class="btn btn-success" />
+                <button type="submit" class="btn btn-success" id="btn" onclick="CheckCadastro()">Cadastrar</button>
             </div>
         </form>
     </div>
