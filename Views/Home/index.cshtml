@@ -28,7 +28,7 @@
             </th>
         </tr>
     </thead>
-    <tbody>
+        <tbody class="border-dark">
             @foreach (var item in Model)
             {
             <tr>
@@ -36,8 +36,9 @@
                         @Html.DisplayFor(modelItem => item.NameSalao)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary text-decoration-none btn-sm">Editar</a> |
-                    <a href="/Salao/Details/@item.Id" class="btn btn-outline-warning text-decoration-none btn-sm">Detalhes</a> |
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary text-decoration-none btn-sm">Editar</a>
+                        <a href="/Salao/Details/@item.Id" class="btn btn-warning text-decoration-none btn-sm">Detalhes</a>
+
                 </td>
             </tr>
             }
