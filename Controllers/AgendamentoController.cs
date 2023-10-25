@@ -48,7 +48,7 @@ namespace Barbearia.Controllers
         // GET: Agendamento/Create
         public IActionResult Create()
         {
-            ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao");
+            //ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao");
             ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "NameService");
             return View();
         }
@@ -66,7 +66,7 @@ namespace Barbearia.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao", agendamento.SalaoId);
+            //ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao", agendamento.SalaoId);
             ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "NameService", agendamento.ServiceId);
             return View(agendamento);
         }
@@ -84,7 +84,7 @@ namespace Barbearia.Controllers
             {
                 return NotFound();
             }
-            ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao", agendamento.SalaoId);
+           // ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao", agendamento.SalaoId);
             ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "NameService", agendamento.ServiceId);
             return View(agendamento);
         }
@@ -121,7 +121,7 @@ namespace Barbearia.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao", agendamento.SalaoId);
+           // ViewData["SalaoId"] = new SelectList(_context.Salao, "Id", "NameSalao", agendamento.SalaoId);
             ViewData["ServiceId"] = new SelectList(_context.Service, "Id", "NameService", agendamento.ServiceId);
             return View(agendamento);
         }
@@ -168,6 +168,20 @@ namespace Barbearia.Controllers
         private bool AgendamentoExists(int id)
         {
           return (_context.Agendamento?.Any(e => e.AgendamentoId == id)).GetValueOrDefault();
+        }
+
+        public async Task<IActionResult> PesquisarDisponibilidade(string hora, int serviceId)
+        {                    
+            try
+            {
+                var resultado = _context.ServiceSalao.Include(x => x.Salao).Where(x => x.ServiceId == serviceId).ToList();
+
+                return Json(new { data = resultado });
+            }
+            catch (Exception ex)
+            {
+                return Json(new { Result = ex.Message });
+            }          
         }
     }
 }
